@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Basic dark/light theme support (class-based) */
+html { color-scheme: light; }
+.dark html { color-scheme: dark; }
+
+body {
+  @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+}
+
+.container {
+  @apply max-w-6xl mx-auto px-4;
+}
+
+/* Simple editor textarea style */
+.editor {
+  @apply w-full p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 font-mono text-sm;
+  min-height: 220px;
+}
