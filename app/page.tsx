@@ -1,25 +1,101 @@
 import React from 'react';
 import Card from '../components/Card';
-import { CubeIcon } from '@heroicons/react/24/outline';
+
+const tools = [
+  {
+    title: 'JSON Formatter',
+    href: '/json-formatter',
+    tag: 'Format & Validate',
+    tagColor: 'blue' as const,
+    desc: 'Format, validasi, minify, dan unduh JSON dengan tampilan tree yang interaktif.',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
+      </svg>
+    ),
+  },
+  {
+    title: 'JSON Compare',
+    href: '/json-compare',
+    tag: 'Diff & Compare',
+    tagColor: 'purple' as const,
+    desc: 'Bandingkan dua JSON dan visualisasikan perbedaan dengan tampilan structured atau git-diff.',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M18 20V10" /><path d="M12 20V4" /><path d="M6 20v-6" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Cron Visualizer',
+    href: '/cron-visualizer',
+    tag: 'Schedule & Cron',
+    tagColor: 'teal' as const,
+    desc: 'Validasi cron expression dan tampilkan jadwal eksekusi berikutnya dalam format yang mudah dipahami.',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+      </svg>
+    ),
+  },
+];
 
 export default function Home() {
   return (
     <section>
-      <header className="mb-8">
-        <h1 className="text-4xl font-bold">NeroLabs</h1>
-        <p className="mt-2 text-gray-600 dark:text-gray-300">Developer toolbox for cron and JSON utilities.</p>
+      {/* Hero */}
+      <header style={{ marginBottom: 40 }}>
+        <div style={{
+          display: 'inline-flex', alignItems: 'center', gap: 6,
+          fontSize: 11, fontWeight: 600, color: '#2563eb',
+          background: '#eff6ff', border: '1px solid #bfdbfe',
+          borderRadius: 99, padding: '3px 10px', marginBottom: 14,
+          letterSpacing: '0.6px', textTransform: 'uppercase',
+        }}>
+          Developer Tools
+        </div>
+        <h1 style={{ fontSize: 28, fontWeight: 700, color: '#111827', letterSpacing: '-0.5px', marginBottom: 8 }}>
+          NeroLabs
+        </h1>
+        <p style={{ fontSize: 14, color: '#6b7280', maxWidth: 440, lineHeight: 1.65 }}>
+          Toolbox ringan untuk developer — format JSON, bandingkan dokumen, dan visualisasikan cron expression langsung di browser.
+        </p>
       </header>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card title="JSON Formatter" href="/json-formatter" icon={<CubeIcon className="w-6 h-6" />}>
-          Format, validate and download JSON.
-        </Card>
-        <Card title="JSON Compare" href="/json-compare" icon={<CubeIcon className="w-6 h-6" />}>
-          Compare two JSON inputs and highlight differences.
-        </Card>
-        <Card title="Cron Visualizer" href="/cron-visualizer" icon={<CubeIcon className="w-6 h-6" />}>
-          Validate cron expressions and show human-readable schedule.
-        </Card>
+      {/* Section label */}
+      <div style={{ fontSize: 11, fontWeight: 600, color: '#9ca3af', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 14 }}>
+        Semua tools
+      </div>
+
+      {/* Cards */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 14, marginBottom: 40 }}>
+        {tools.map((t) => (
+          <Card key={t.href} title={t.title} href={t.href} icon={t.icon} tag={t.tag} tagColor={t.tagColor}>
+            {t.desc}
+          </Card>
+        ))}
+      </div>
+
+      {/* Stats */}
+      <div style={{ fontSize: 11, fontWeight: 600, color: '#9ca3af', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 12 }}>
+        Ringkasan
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
+        {[
+          { val: '3', label: 'Tools tersedia' },
+          { val: '100%', label: 'Berjalan di browser' },
+          { val: '0ms', label: 'Tanpa server round-trip' },
+        ].map((s) => (
+          <div key={s.label} style={{
+            background: '#ffffff',
+            border: '1px solid rgba(0,0,0,0.07)',
+            borderRadius: 10, padding: '16px 20px',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+          }}>
+            <div style={{ fontSize: 22, fontWeight: 700, color: '#111827' }}>{s.val}</div>
+            <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 3 }}>{s.label}</div>
+          </div>
+        ))}
       </div>
     </section>
   );

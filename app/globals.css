@@ -2,20 +2,221 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Basic dark/light theme support (class-based) */
-html { color-scheme: light; }
-.dark html { color-scheme: dark; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ══════════════════════════════════════════
+   LIGHT MODE (default)
+══════════════════════════════════════════ */
+:root {
+  --bg-page:       #f4f6f9;
+  --bg-surface:    #ffffff;
+  --bg-elevated:   #f9fafb;
+  --bg-input:      #ffffff;
+  --bg-code:       #f3f4f6;
+
+  --border-subtle: #e5e7eb;
+  --border-medium: #d1d5db;
+  --border-strong: #9ca3af;
+
+  --text-h:        #0f172a;
+  --text-body:     #374151;
+  --text-muted:    #6b7280;
+  --text-faint:    #9ca3af;
+
+  --blue:          #2563eb;
+  --blue-light:    #eff6ff;
+  --blue-border:   #bfdbfe;
+  --purple:        #7c3aed;
+  --purple-light:  #f5f3ff;
+  --purple-border: #ddd6fe;
+  --teal:          #0d9488;
+  --teal-light:    #f0fdfa;
+  --teal-border:   #99f6e4;
+  --green:         #16a34a;
+  --red:           #dc2626;
+  --yellow:        #d97706;
+
+  /* Sidebar selalu gelap */
+  --sidebar-bg:           #18212f;
+  --sidebar-border:       rgba(255,255,255,0.06);
+  --sidebar-text:         #f1f5f9;
+  --sidebar-text-muted:   #475569;
+  --sidebar-active-bg:    rgba(255,255,255,0.09);
+  --sidebar-btn-border:   rgba(255,255,255,0.08);
+}
+
+/* ══════════════════════════════════════════
+   DARK MODE
+══════════════════════════════════════════ */
+html.dark {
+  --bg-page:       #0f1117;
+  --bg-surface:    #1a1f2e;
+  --bg-elevated:   #141824;
+  --bg-input:      #1a1f2e;
+  --bg-code:       #111520;
+
+  --border-subtle: rgba(255,255,255,0.07);
+  --border-medium: rgba(255,255,255,0.12);
+  --border-strong: rgba(255,255,255,0.22);
+
+  --text-h:        #f1f5f9;
+  --text-body:     #cbd5e1;
+  --text-muted:    #64748b;
+  --text-faint:    #334155;
+
+  --blue:          #3b82f6;
+  --blue-light:    rgba(59,130,246,0.12);
+  --blue-border:   rgba(59,130,246,0.25);
+  --purple:        #818cf8;
+  --purple-light:  rgba(129,140,248,0.12);
+  --purple-border: rgba(129,140,248,0.25);
+  --teal:          #2dd4bf;
+  --teal-light:    rgba(45,212,191,0.1);
+  --teal-border:   rgba(45,212,191,0.25);
+  --green:         #4ade80;
+  --red:           #f87171;
+  --yellow:        #fbbf24;
+}
+
+/* ══════════════════════════════════════════
+   BASE
+══════════════════════════════════════════ */
+html {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 
 body {
-  @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+  background: var(--bg-page);
+  color: var(--text-body);
+  min-height: 100vh;
+  transition: background 0.2s, color 0.2s;
 }
 
 .container {
-  @apply max-w-6xl mx-auto px-4;
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-/* Simple editor textarea style */
+/* ══════════════════════════════════════════
+   EDITOR TEXTAREA
+══════════════════════════════════════════ */
 .editor {
-  @apply w-full p-3 rounded-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 font-mono text-sm;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: var(--bg-input);
+  border: 1.5px solid var(--border-subtle);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--text-h);
   min-height: 220px;
+  resize: vertical;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.2s;
+  outline: none;
 }
+.editor:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+.editor::placeholder { color: var(--text-faint); }
+
+/* ══════════════════════════════════════════
+   TAILWIND OVERRIDES — pakai CSS vars
+   sehingga otomatis ikut dark/light
+══════════════════════════════════════════ */
+
+/* Backgrounds */
+.bg-white,
+.dark\:bg-gray-700 { background-color: var(--bg-surface) !important; }
+
+.bg-gray-50,
+.dark\:bg-gray-800\/50 { background-color: var(--bg-elevated) !important; }
+
+.bg-gray-100,
+.bg-gray-800,
+.dark\:bg-gray-800 { background-color: var(--bg-code) !important; }
+
+.bg-gray-900,
+.dark\:bg-gray-900 { background-color: var(--bg-input) !important; }
+
+/* Text */
+.text-gray-900,
+.dark\:text-gray-100 { color: var(--text-h) !important; }
+
+.text-gray-700,
+.text-gray-800,
+.dark\:text-gray-300 { color: var(--text-body) !important; }
+
+.text-gray-600,
+.text-gray-500,
+.dark\:text-gray-400 { color: var(--text-muted) !important; }
+
+.text-gray-400,
+.dark\:text-gray-500 { color: var(--text-faint) !important; }
+
+/* Semantic colors — ikut token */
+.text-blue-600,
+.dark\:text-blue-400 { color: var(--blue) !important; }
+
+.text-green-600,
+.dark\:text-green-400 { color: var(--green) !important; }
+
+.text-red-500,
+.dark\:text-red-400 { color: var(--red) !important; }
+
+.text-yellow-600,
+.dark\:text-yellow-400 { color: var(--yellow) !important; }
+
+/* Semantic backgrounds */
+.bg-blue-50,
+.dark\:bg-blue-900\/20 { background-color: var(--blue-light) !important; }
+.bg-red-50,
+.dark\:bg-red-900\/20 { background-color: rgba(220,38,38,0.08) !important; }
+.bg-green-50,
+.dark\:bg-green-900\/10 { background-color: rgba(22,163,74,0.08) !important; }
+.bg-yellow-50,
+.dark\:bg-yellow-900\/10 { background-color: rgba(217,119,6,0.08) !important; }
+.bg-amber-50,
+.dark\:bg-amber-900\/20 { background-color: rgba(217,119,6,0.08) !important; }
+
+/* Borders */
+.border-gray-200,
+.dark\:border-gray-700 { border-color: var(--border-subtle) !important; }
+
+.border-gray-300,
+.dark\:border-gray-600 { border-color: var(--border-medium) !important; }
+
+/* Inputs & selects */
+input[type="number"],
+input[type="text"],
+input[type="email"],
+select {
+  background: var(--bg-input) !important;
+  color: var(--text-h) !important;
+  border-color: var(--border-medium) !important;
+  transition: background 0.2s, color 0.2s, border-color 0.15s;
+}
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--blue) !important;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+}
+
+/* Font mono */
+.font-mono:not(textarea):not(input) {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ══════════════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-medium); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-strong); }
