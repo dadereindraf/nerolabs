@@ -1,7 +1,0 @@
-{
-  "/api/cron/route": "app/api/cron/route.js",
-  "/cron-visualizer/page": "app/cron-visualizer/page.js",
-  "/page": "app/page.js",
-  "/json-formatter/page": "app/json-formatter/page.js",
-  "/json-compare/page": "app/json-compare/page.js"
-}
