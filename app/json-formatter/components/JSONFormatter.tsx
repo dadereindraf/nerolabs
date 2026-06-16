@@ -93,7 +93,7 @@ function JsonNode({
       {/* Children */}
       {isExpandable && open && (
         <div className="ml-4 pl-3 border-l-2 border-gray-200 dark:border-gray-700">
-          {entries.map(([k, v], i) => (
+          {entries.map(([k, v]) => (
             <JsonNode
               key={k}
               nodeKey={k}

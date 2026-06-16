@@ -84,7 +84,7 @@ function humanize(parts: CronParts, mode: Mode): string {
 
 // ── Cron Maker ───────────────────────────────────────────────────────────────
 
-function CronMaker({ mode, onChange }: { mode: Mode; onChange: (expr: string) => void }) {
+function CronMaker({ mode, onChange }: { mode: Mode; onChange: (_arg: string) => void }) {
   const isNifi = mode === 'nifi';
   const presets = isNifi ? PRESETS_NIFI : PRESETS_STANDARD;
 
