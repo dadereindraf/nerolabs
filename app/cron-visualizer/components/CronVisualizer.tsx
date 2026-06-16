@@ -135,7 +135,6 @@ function CronMaker({ mode, onChange }: { mode: Mode; onChange: (expr: string) =>
     onChange(toExpr(next));
   };
 
-  const expr = toExpr(parts);
   const freqOptions: Freq[] = isNifi
     ? ['second', 'minute', 'hourly', 'daily', 'weekly', 'monthly']
     : ['minute', 'hourly', 'daily', 'weekly', 'monthly'];
@@ -281,9 +280,9 @@ function CronMaker({ mode, onChange }: { mode: Mode; onChange: (expr: string) =>
       {/* Generated expression */}
       <div className="flex items-center gap-2 pt-1 border-t border-gray-200 dark:border-gray-700">
         <code className="flex-1 font-mono text-sm bg-white dark:bg-gray-900 px-3 py-1.5 rounded border border-gray-200 dark:border-gray-700 text-blue-600 dark:text-blue-400">
-          {expr}
+          {toExpr(parts)}
         </code>
-        <button onClick={() => onChange(expr)}
+        <button onClick={() => onChange(toExpr(parts))}
           className="px-3 py-1.5 text-xs bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors shrink-0">
           Use this
         </button>

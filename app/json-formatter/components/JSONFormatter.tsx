@@ -18,12 +18,10 @@ function JsonNode({
   value,
   nodeKey,
   depth = 0,
-  isLast = true,
 }: {
   value: JsonValue;
   nodeKey?: string;
   depth?: number;
-  isLast?: boolean;
 }) {
   const [open, setOpen] = useState(depth < 2);
 
@@ -40,7 +38,7 @@ function JsonNode({
     if (value === null) return <span className="text-gray-400 font-mono">null</span>;
     if (typeof value === 'boolean') return <span className="text-blue-500 font-mono flex items-center gap-1"><span className="inline-block w-3 h-3 rounded-sm bg-blue-500" />{String(value)}</span>;
     if (typeof value === 'number') return <span className="text-blue-600 dark:text-blue-400 font-mono">{value}</span>;
-    if (typeof value === 'string') return <span className="text-gray-700 dark:text-gray-200 font-mono">"{value}"</span>;
+    if (typeof value === 'string') return <span className="text-gray-700 dark:text-gray-200 font-mono">{`"${value}"`}</span>;
     return null;
   };
 
@@ -101,7 +99,6 @@ function JsonNode({
               nodeKey={k}
               value={v}
               depth={depth + 1}
-              isLast={i === entries.length - 1}
             />
           ))}
         </div>

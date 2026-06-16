@@ -126,8 +126,8 @@ function computeLineDiff(left: string, right: string): LineDiff[] {
 
 function GitDiffView({ left, right }: { left: string; right: string }) {
   let leftFmt = left, rightFmt = right;
-  try { leftFmt = JSON.stringify(JSON.parse(left), null, 2); } catch {}
-  try { rightFmt = JSON.stringify(JSON.parse(right), null, 2); } catch {}
+  try { leftFmt = JSON.stringify(JSON.parse(left), null, 2); } catch {/* ignore error */}
+  try { rightFmt = JSON.stringify(JSON.parse(right), null, 2); } catch {/* ignore error */}
 
   const lines = computeLineDiff(leftFmt, rightFmt);
 
