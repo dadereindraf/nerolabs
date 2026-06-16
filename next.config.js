@@ -3,9 +3,6 @@
  */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    appDir: true
-  },
   serverExternalPackages: ['cron-parser'],
 };
 
