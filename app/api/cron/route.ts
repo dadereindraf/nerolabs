@@ -6,9 +6,15 @@ export async function POST(req: Request) {
     const body = await req.json();
     const expr = String(body?.expr || '');
 
-    const interval = CronExpressionParser.parse(expr);
+    const count = Math.min(
+      Math.max(Number(body?.count || 10), 1),
+      100
+    );
 
-    const next = interval.take(10).map((date) => date.toISOString());
+    const interval = CronExpressionParser.parse(expr);
+    const next = interval
+      .take(count)
+      .map((date) => date.toISOString());
 
     return NextResponse.json({ times: next });
 
