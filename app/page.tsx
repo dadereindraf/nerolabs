@@ -54,7 +54,7 @@ export default function Home() {
         }}>
           Developer Tools
         </div>
-        <h1 style={{ fontSize: 28, fontWeight: 700, color: '#111827', letterSpacing: '-0.5px', marginBottom: 8 }}>
+        <h1 className="text-gray-900 dark:text-gray-100 font-bold text-[28px] mb-2 tracking-tight">
           NeroLabs
         </h1>
         <p style={{ fontSize: 14, color: '#6b7280', maxWidth: 440, lineHeight: 1.65 }}>
