@@ -47,23 +47,23 @@ export default function Home() {
       <header style={{ marginBottom: 40 }}>
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: 6,
-          fontSize: 11, fontWeight: 600, color: '#2563eb',
-          background: '#eff6ff', border: '1px solid #bfdbfe',
+          fontSize: 11, fontWeight: 600, color: 'var(--blue)',
+          background: 'var(--blue-light)', border: '1px solid var(--blue-border)',
           borderRadius: 99, padding: '3px 10px', marginBottom: 14,
           letterSpacing: '0.6px', textTransform: 'uppercase',
         }}>
           Developer Tools
         </div>
-        <h1 className="text-gray-900 dark:text-gray-100 font-bold text-[28px] mb-2 tracking-tight">
+        <h1 style={{ fontSize: 28, fontWeight: 700, color: 'var(--text-h)', letterSpacing: '-0.5px', marginBottom: 8 }}>
           NeroLabs
         </h1>
-        <p style={{ fontSize: 14, color: '#6b7280', maxWidth: 440, lineHeight: 1.65 }}>
+        <p style={{ fontSize: 14, color: 'var(--text-muted)', maxWidth: 440, lineHeight: 1.65 }}>
           Toolbox ringan untuk developer — format JSON, bandingkan dokumen, dan visualisasikan cron expression langsung di browser.
         </p>
       </header>
 
       {/* Section label */}
-      <div style={{ fontSize: 11, fontWeight: 600, color: '#9ca3af', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 14 }}>
+      <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 14 }}>
         Semua tools
       </div>
 
@@ -77,7 +77,7 @@ export default function Home() {
       </div>
 
       {/* Stats */}
-      <div style={{ fontSize: 11, fontWeight: 600, color: '#9ca3af', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 12 }}>
+      <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--text-muted)', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 12 }}>
         Ringkasan
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
@@ -87,13 +87,13 @@ export default function Home() {
           { val: '0ms', label: 'Tanpa server round-trip' },
         ].map((s) => (
           <div key={s.label} style={{
-            background: '#ffffff',
-            border: '1px solid rgba(0,0,0,0.07)',
+            background: 'var(--bg-surface)',
+            border: '1px solid var(--border-subtle)',
             borderRadius: 10, padding: '16px 20px',
-            boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+            boxShadow: '0 1px 3px var(--shadow)',
           }}>
-            <div style={{ fontSize: 22, fontWeight: 700, color: '#111827' }}>{s.val}</div>
-            <div style={{ fontSize: 12, color: '#9ca3af', marginTop: 3 }}>{s.label}</div>
+            <div style={{ fontSize: 22, fontWeight: 700, color: 'var(--text-h)' }}>{s.val}</div>
+            <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 3 }}>{s.label}</div>
           </div>
         ))}
       </div>

@@ -1,3 +1,4 @@
+// @ts-ignore
 import './globals.css';
 import React from 'react';
 import Sidebar from '../components/Sidebar';
